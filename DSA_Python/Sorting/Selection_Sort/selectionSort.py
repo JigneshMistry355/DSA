@@ -1,13 +1,17 @@
-import array as arr
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        # hold minimum element index 
+        min_idx = i
+        # compare the remaining elements with new min_idx
+        for j in range(i+1,n):
+            if arr[j] < arr[min_idx]:
+                # update the index of new samllest number 
+                min_idx = j
+        # swap element at the current index with the element at the newly found index  
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
-a = arr.array('i',[64,22,45,12,11])
-
-for i in range(len(a)):
-    min = i
-    for j in range(i+1,len(a)):
-        if a[min] > a[j]:
-            min = j
-    if i != min:
-        a[i], a[min] = a[min], a[i]
-
-print(list(a))
+arr = [4,6,3,1,2]
+print("Unsorted :: ",arr)
+print("Sorted :: ", selection_sort(arr))
+print(arr)
